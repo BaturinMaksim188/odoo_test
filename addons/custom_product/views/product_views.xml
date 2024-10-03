@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <record id="view_custom_product_tree" model="ir.ui.view">
+            <field name="name">custom.product.tree</field>
+            <field name="model">custom.product</field>
+            <field name="arch" type="xml">
+                <tree string="Товары">
+                    <field name="name"/>
+                    <field name="color"/>
+                    <field name="price"/>
+                    <field name="quantity"/>
+                    <field name="volume" readonly="1"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="view_custom_product_form" model="ir.ui.view">
+            <field name="name">custom.product.form</field>
+            <field name="model">custom.product</field>
+            <field name="arch" type="xml">
+                <form string="Товар">
+                    <sheet>
+                        <group>
+                            <field name="name"/>
+                            <field name="color"/>
+                            <field name="delivery_date"/>
+                            <field name="price"/>
+                            <field name="quantity"/>
+                        </group>
+                        <group>
+                            <field name="height"/>
+                            <field name="width"/>
+                            <field name="depth"/>
+                            <field name="volume" readonly="1"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="action_custom_product" model="ir.actions.act_window">
+            <field name="name">Товары</field>
+            <field name="res_model">custom.product</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <record id="menu_custom_product_root" model="ir.ui.menu">
+            <field name="name">Custom Products</field>
+            <field name="sequence">10</field>
+        </record>
+
+        <record id="menu_custom_product" model="ir.ui.menu">
+            <field name="name">Товары</field>
+            <field name="parent_id" ref="menu_custom_product_root"/>
+            <field name="sequence">1</field>
+            <field name="action" ref="action_custom_product"/>
+        </record>
+    </data>
+</odoo>
